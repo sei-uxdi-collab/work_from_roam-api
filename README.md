@@ -1,14 +1,57 @@
 API for Work From Roam(working title)
-# rails-api-template
 
-A template for starting projects with `rails-api`. Includes authentication.
+[Deployed API](https://murmuring-anchorage-97253.herokuapp.com/)
 
-At the beginning of each cohort, update the versions in [`Gemfile`](Gemfile).
+### POST/Create a work_space
+```sh
+curl "http://localhost:4741/work_spaces" \
+  --include \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Token token=${TOKEN}" \
+  --data '{
+    "work_space": {
+      "place_id": "'"${PLACE}"'",
+      "lat": "'"${LAT}"'",
+      "lng": "'"${LNG}"'"
+    }
+  }'
+```
 
-## Prerequisites
+### GET/Show a work_space
+```sh
+curl "http://localhost:4741/work_spaces/${ID}" \
+  --include \
+  --request GET \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Token token=${TOKEN}" \
 
--   [rails-api-examples-walkthrough](https://git.generalassemb.ly/ga-wdi-boston/rails-api-examples-walkthrough)
+```
 
+### POST/Create a review
+```sh
+curl "http://localhost:4741/reviews" \
+  --include \
+  --request POST \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Token token=${TOKEN}" \
+  --data '{
+    "review": {
+      "rating": "'"${RATING}"'",
+      "note": "'"${NOTE}"'",
+      "work_space_id": "'"${ID}"'"
+    }
+  }'
+```
+
+### GET/Show a review
+```sh
+curl "http://localhost:4741/reviews/${ID}" \
+  --include \
+  --request GET \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Token token=${TOKEN}" \
+```
 ## Dependencies
 
 Install with `bundle install`.
@@ -19,32 +62,7 @@ Install with `bundle install`.
 -   [`ruby`](https://www.ruby-lang.org/en/)
 -   [`postgres`](http://www.postgresql.org)
 
-## Installation
 
-### Download Template:
-1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory (`unzip ~/Downloads/rails-api-template-master.zip`)
-1.  Move into the new project and `git init`.
-
-### Customize Template:
-1.  Empty [`README.md`](README.md) and fill with your own content.
-1.  Rename your app module in `config/application.rb` (change
-    `RailsApiTemplate`).
-1.  Rename your project database in `config/database.yml` (change
-    `'rails-api-template'`).
-
-### Setup Environment:
-1.  Install dependencies with `bundle install`.
-1.  `git add` and `git commit` your changes.
-1.  Create a `.env` for sensitive settings (`touch .env`).
-1.  Generate new `development` and `test` secrets (`bundle exec rails secret`).
-1.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
-    respectively.
-1.  In order to make requests to your deployed API, you will need to set
-    `SECRET_KEY_BASE` in the environment of the production API (for example, using `heroku config:set` or the Heroku dashboard).
-1.  In order to make requests from your deployed client application, you will
-    need to set `CLIENT_ORIGIN` in the environment of the production API (for example, `heroku config:set CLIENT_ORIGIN=https://<github-username>.github.io`).
-    See more about deploying to heroku [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
 
 ### Setup your database:
     - bin/rails db:drop (if it already exists)
@@ -61,14 +79,9 @@ Install with `bundle install`.
 
 ## Structure
 
-This template follows the standard [project structure](https://gist.git.generalassemb.ly/danman01/64472678e25552412050c237ced48964) in Rails.
-
 `curl` command scripts are stored in [`curl-scripts`](curl-scripts) with names that
 correspond to API actions.
 
-User authentication is built-in.
-
-Tests (also called specs) are located in the `spec` folder.
 
 ## Tasks
 
@@ -83,13 +96,6 @@ Developers should run these often!
 
 ## API
 
-Use this as the basis for your own API documentation. Add a new third-level
-heading for your custom entities, and follow the pattern provided for the
-built-in user authentication documentation.
-
-Scripts are included in [`curl-scripts`](curl-scripts) to test built-in actions. Add your
-own scripts to test your custom API. As an alternative, you can write automated
-tests in RSpec to test your API.
 
 ### Authentication Endpoints and Curl Scripts
 
@@ -218,30 +224,6 @@ Response:
 ```md
 HTTP/1.1 204 No Content
 ```
-
-### Keeping your database up to date
-
-Remember, creating and applying [migrations](https://edgeguides.rubyonrails.org/active_record_migrations.html#creating-a-migration) are two different things. After you create a migration (one of those files that lives in `db/migrate/`), you need to apply it to each database using `bin/rails db:migrate` (local) or `heroku run rails db:migrate` (production).
-
-### Rolling Back a Database Migration
-
-Sometimes you need to revert a migration that you already applied. There are many ways to revert your database to a previous state, and one of the most common is simply rolling back (reverting) the last migration that you ran. Read more in the [Rails Guide](https://edgeguides.rubyonrails.org/active_record_migrations.html#rolling-back)
-
-### Reset Database without dropping
-
-If you don't want to completely [reset the database](https://edgeguides.rubyonrails.org/active_record_migrations.html#resetting-the-database) (maybe you have data you want to preserve?), you have other, less destructive options. One is rolling back a specific migration by specifying the `VERSION` that the database should revert to. Ask a consultant if you need assistance, as **database commands like these are non-reversable.**
-
-To rerun _all_ migrations, starting from `VERSION=0`, you would do:
-
-
-```sh
-bin/rails db:migrate VERSION=0
-bin/rails db:migrate db:seed db:examples
-```
-
-To run this command (and others like this) on Heroku, just append `heroku run` before the `rails` command.
-
-
 
 ## Additional Resources
 - [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
