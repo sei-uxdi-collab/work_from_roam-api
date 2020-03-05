@@ -1,4 +1,4 @@
-class WorkSpacesController < ProtectedController
+class WorkSpacesController < OpenReadController
   before_action :set_work_space, only: [:show, :update, :destroy]
 
   # GET /work_spaces

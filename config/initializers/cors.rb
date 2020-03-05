@@ -8,7 +8,7 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-development_client_origin = 'http://localhost:7165' if Rails.env.development?
+development_client_origin = 'http://localhost:3000' if Rails.env.development?
 
 development_client_origin ||= ENV['CLIENT_ORIGIN']
 

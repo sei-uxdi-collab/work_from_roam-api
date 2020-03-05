@@ -9,6 +9,14 @@ curl "http://localhost:4741/reviews" \
     "review": {
       "rating": "'"${RATING}"'",
       "note": "'"${NOTE}"'",
+      "wifi": "'"${WIFI}"'",
+      "food": "'"${FOOD}"'",
+      "bathroom": "'"${BATH}"'",
+      "coffee": "'"${COFFEE}"'",
+      "seating": "'"${SEAT}"'",
+      "outlet": "'"${OUT}"'",
+      "noise": "'"${NOISE}"'",
+      "review": "'"${REV}"'",
       "work_space_id": "'"${ID}"'"
     }
   }'
