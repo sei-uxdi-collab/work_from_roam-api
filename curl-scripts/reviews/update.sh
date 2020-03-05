@@ -8,7 +8,15 @@ curl "http://localhost:4741/reviews/${ID}" \
   --data '{
     "review": {
       "rating": "'"${RATING}"'",
-      "note": "'"${NOTE}"'"
+      "note": "'"${NOTE}"'",
+      "wifi": "'"${WIFI}"'",
+      "food": "'"${FOOD}"'",
+      "bathroom": "'"${BATH}"'",
+      "coffee": "'"${COFFEE}"'",
+      "seating": "'"${SEAT}"'",
+      "outlet": "'"${OUT}"'",
+      "noise": "'"${NOISE}"'",
+      "review": "'"${REV}"'"
     }
   }'
 

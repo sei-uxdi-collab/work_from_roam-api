@@ -46,6 +46,8 @@ class ReviewsController < OpenReadController
 
     # Only allow a trusted parameter "white list" through.
     def review_params
-      params.require(:review).permit(:rating, :note, :user_id, :work_space_id)
+      params.require(:review).permit(:rating, :note, :wifi, :bathroom, :food,
+                                     :coffee, :noise, :outlet, :seating,
+                                     :user_id, :review, :work_space_id)
     end
 end
