@@ -48,6 +48,6 @@ class ReviewsController < OpenReadController
     def review_params
       params.require(:review).permit(:rating, :note, :wifi, :bathroom, :food,
                                      :coffee, :noise, :outlet, :seating,
-                                     :user_id, :review, :work_space_id)
+                                     :user_id, :work_space_id)
     end
 end
