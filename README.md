@@ -1,6 +1,51 @@
-API for Work From Roam(working title)
+# Work From Roam API
 
-[Deployed API](https://murmuring-anchorage-97253.herokuapp.com/)
+
+[Deployed API](https://warm-chamber-62945.herokuapp.com/)
+
+[Deployed Client](https://sei-uxdi-collab.github.io/work_from_roam-client/)
+
+[Client Repo](https://github.com/sei-uxdi-collab/work_from_roam-client)
+
+## ERD
+
+![ERD](WorkFromRoamERD.png)
+
+## Dependencies
+
+Install with `bundle install`.
+
+-   [`rails-api`](https://github.com/rails-api/rails-api)
+-   [`rails`](https://github.com/rails/rails)
+-   [`active_model_serializers`](https://github.com/rails-api/active_model_serializers)
+-   [`ruby`](https://www.ruby-lang.org/en/)
+-   [`postgres`](http://www.postgresql.org)
+
+
+
+### Setup your database:
+    - bin/rails db:drop (if it already exists)
+    - bin/rails db:create
+    - bin/rails db:migrate
+    - bin/rails db:seed
+    - bin/rails db:examples
+
+  **Note**: Do this for each database you want to set up. Your local database and production (Heroku) database will both need to be set up in this way!
+
+
+### Run your server!
+1. Run the API server with `bin/rails server` or `bundle exec rails server`.
+
+### Endpoints and Curl Scripts
+
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/work_spaces`             | `work_spaces#create`    |
+| POST   | `/reviews`             | `reviews#create`    |
+| GET  | `/work_spaces`     | `work_spaces#index`  |
+| GET | `/reviews`        | `reviews#index`   |
+| GET | `/work_spaces/:id` | `workspaces#show` |
+| GET | `/reviews/:id` | `reviews#show` |
 
 ### POST/Create a work_space
 ```sh
@@ -39,6 +84,14 @@ curl "http://localhost:4741/reviews" \
     "review": {
       "rating": "'"${RATING}"'",
       "note": "'"${NOTE}"'",
+      "wifi": "'"${WIFI}"'",
+      "food": "'"${FOOD}"'",
+      "bathroom": "'"${BATH}"'",
+      "coffee": "'"${COFFEE}"'",
+      "seating": "'"${SEAT}"'",
+      "outlet": "'"${OUT}"'",
+      "noise": "'"${NOISE}"'",
+      "review": "'"${REV}"'",
       "work_space_id": "'"${ID}"'"
     }
   }'
@@ -52,47 +105,6 @@ curl "http://localhost:4741/reviews/${ID}" \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}" \
 ```
-## Dependencies
-
-Install with `bundle install`.
-
--   [`rails-api`](https://github.com/rails-api/rails-api)
--   [`rails`](https://github.com/rails/rails)
--   [`active_model_serializers`](https://github.com/rails-api/active_model_serializers)
--   [`ruby`](https://www.ruby-lang.org/en/)
--   [`postgres`](http://www.postgresql.org)
-
-
-
-### Setup your database:
-    - bin/rails db:drop (if it already exists)
-    - bin/rails db:create
-    - bin/rails db:migrate
-    - bin/rails db:seed
-    - bin/rails db:examples
-
-  **Note**: Do this for each database you want to set up. Your local database and production (Heroku) database will both need to be set up in this way!
-
-
-### Run your server!
-1. Run the API server with `bin/rails server` or `bundle exec rails server`.
-
-## Structure
-
-`curl` command scripts are stored in [`curl-scripts`](curl-scripts) with names that
-correspond to API actions.
-
-
-## Tasks
-
-Developers should run these often!
-
--   `bin/rails routes` lists the endpoints available in your API.
--   `bin/rspec spec` runs automated tests located in the `spec` folder.
--   `bin/rails console` opens a REPL that pre-loads the API.
--   `bin/rails db` opens your database client and loads the correct database.
--   `bin/rails server` starts the API.
--   `curl-scripts/*.sh` run various `curl` commands to test the API. See below.
 
 ## API
 
