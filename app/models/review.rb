@@ -12,7 +12,8 @@ class Review < ApplicationRecord
   end
 
   def bool
-    if Review.average(:noise).to_i < 2
+    if ((Review.where(rating: 0).pluck(:rating).length.to_f /
+    count.to_f * 100).to_i) > 25
       false
     else
       true
