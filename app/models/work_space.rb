@@ -17,7 +17,7 @@ class WorkSpace < ApplicationRecord
   end
 
   def avg_wifi
-    # reviews.average(:wifi).to_f
+    reviews.average(:wifi).to_f
   end
 
   def avg_bathroom
@@ -25,15 +25,15 @@ class WorkSpace < ApplicationRecord
   end
 
   def avg_food
-    # reviews.average(:food).to_f
+    reviews.average(:food).to_f
   end
 
   def avg_coffee
-    # reviews.average(:coffee).to_f
+    reviews.average(:coffee).to_f
   end
 
   def avg_seating
-    # reviews.average(:seating).to_f
+    reviews.average(:seating).to_f
   end
 
   # Booleans for attributes
