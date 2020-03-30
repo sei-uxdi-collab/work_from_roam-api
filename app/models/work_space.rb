@@ -9,34 +9,48 @@ class WorkSpace < ApplicationRecord
 
   # Averages for attributes
   def avg_rating
-    reviews.average(:rating).to_f
+    reviews.average(:rating).round(2)
   end
 
   def avg_noise
-    reviews.average(:noise).to_f
+    reviews.average(:noise).round(2)
   end
 
   def avg_wifi
-    reviews.average(:wifi).to_f
+    reviews.average(:wifi).round(2)
   end
 
   def avg_bathroom
-    reviews.average(:bathroom).to_f
+    reviews.average(:bathroom).round(2)
   end
 
   def avg_food
-    reviews.average(:food).to_f
+    reviews.average(:food).round(2)
   end
 
   def avg_coffee
-    reviews.average(:coffee).to_f
+    reviews.average(:coffee).round(2)
   end
 
   def avg_seating
-    reviews.average(:seating).to_f
+    reviews.average(:seating).round(2)
+  end
+
+  def avg_outlet
+    reviews.average(:outlet).round(2)
   end
 
   # Booleans for attributes
+  def bool_outlet
+    if ((reviews.where(outlet: 0
+    ).pluck(:outlet)).length.to_f/
+    count_reviews * 100) > 25
+      false
+    else
+      true
+    end
+  end
+
   def bool_seating
     if ((reviews.where(seating: 0
     ).pluck(:seating)).length.to_f/

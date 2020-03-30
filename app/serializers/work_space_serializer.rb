@@ -13,6 +13,8 @@ class WorkSpaceSerializer < ActiveModel::Serializer
              :avg_food,
              :avg_coffee,
              :avg_seating,
+             :avg_outlet,
+             :bool_outlet,
              :bool_seating,
              :bool_coffee,
              :bool_food,
