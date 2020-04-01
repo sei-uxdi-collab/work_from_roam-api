@@ -46,6 +46,6 @@ class WorkSpacesController < OpenReadController
 
     # Only allow a trusted parameter "white list" through.
     def work_space_params
-      params.require(:work_space).permit(:place_id, :lat, :lng, :user_id)
+      params.require(:work_space).permit(:place_id, :lat, :lng, :user_id, :avg_rating)
     end
 end
