@@ -2,20 +2,52 @@ class WorkSpace < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :delete_all
 
-  # scope :max_rating, -> (rating) { joins(:reviews).group("work_spaces.id").where("rating > ?", rating) if rating }
   scope :max_rating, ->(rating) { joins(:reviews)
-    .group("work_spaces.id")
+    .group('work_spaces.id')
     .order('AVG(reviews.rating) desc')
     .having('AVG(reviews.rating) > ?', rating) if rating }
-  # Count all reviews
+
+  scope :max_bathroom, ->(bathroom) { joins(:reviews)
+    .group('work_spaces.id')
+    .order('AVG(reviews.bathroom) desc')
+    .having('AVG(reviews.bathroom) > ?', bathroom) if bathroom }
+
+  scope :max_noise, ->(noise) { joins(:reviews)
+    .group('work_spaces.id')
+    .order('AVG(reviews.noise) desc')
+    .having('AVG(reviews.noise) > ?', noise) if noise }
+
+  scope :max_wifi, ->(wifi) { joins(:reviews)
+    .group('work_spaces.id')
+    .order('AVG(reviews.wifi) desc')
+    .having('AVG(reviews.wifi) > ?', wifi) if wifi }
+
+  scope :max_seating, ->(seating) { joins(:reviews)
+    .group('work_spaces.id')
+    .order('AVG(reviews.seating) desc')
+    .having('AVG(reviews.seating) > ?', seating) if seating }
+
   def top_avg_rating
-    # WorkSpace.left_joins(:reviews).group(:id).order('COUNT(reviews.id) ASC').limit(3)
-    # WorkSpace.find_by reviews.order(rating: :desc).limit(2)
-    # WorkSpace.joins(:reviews).where(reviews: { rating: 5 })
-    # WorkSpace.where('avg_rating > 3')
     WorkSpace.max_rating(2).limit(5)
   end
 
+  def top_avg_bathroom
+    WorkSpace.max_bathroom(2).limit(5)
+  end
+
+  def top_avg_noise
+    WorkSpace.max_noise(2).limit(5)
+  end
+
+  def top_avg_wifi
+    WorkSpace.max_wifi(2).limit(5)
+  end
+
+  def top_avg_seating
+    WorkSpace.max_seating(2).limit(5)
+  end
+
+  # Count all reviews
   def count_reviews
     reviews.size
   end
@@ -51,14 +83,6 @@ class WorkSpace < ApplicationRecord
 
   def avg_outlet
     reviews.average(:outlet).to_f
-  end
-
-  def top_rating
-    reviews.order(rating: :desc).limit(2)
-  end
-
-  def top_bathroom
-    reviews.order(bathroom: :desc).limit(2)
   end
 
   # Booleans for attributes
