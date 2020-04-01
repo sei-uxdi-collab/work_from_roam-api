@@ -4,10 +4,7 @@ class ReviewsController < OpenReadController
   # GET /reviews
   def index
     @reviews = Review.all
-    @reviews = Review.where(nil) # creates an anonymous scope
-    filtering_params(params).each do |key, value|
-      @reviews = @reviews.public_send("filter_by_#{key}", value) if value.present?
-    end
+
     render json: @reviews
   end
 
@@ -45,10 +42,6 @@ class ReviewsController < OpenReadController
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
-    end
-
-    def filtering_params(params)
-      params.slice(:rating)
     end
     # Only allow a trusted parameter "white list" through.
     def review_params
