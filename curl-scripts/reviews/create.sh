@@ -16,8 +16,7 @@ curl "http://localhost:4741/reviews" \
       "seating": "'"${SEAT}"'",
       "outlet": "'"${OUT}"'",
       "noise": "'"${NOISE}"'",
-      "review": "'"${REV}"'",
-      "work_space_id": "'"${ID}"'"
+      "work_space_id": "'"${WID}"'"
     }
   }'
 

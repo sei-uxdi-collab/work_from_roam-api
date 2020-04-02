@@ -43,7 +43,6 @@ class ReviewsController < OpenReadController
     def set_review
       @review = Review.find(params[:id])
     end
-
     # Only allow a trusted parameter "white list" through.
     def review_params
       params.require(:review).permit(:rating, :note, :wifi, :bathroom, :food,

@@ -8,6 +8,7 @@ class ReviewSerializer < ActiveModel::Serializer
              :noise,
              :coffee,
              :seating,
-             :outlet
+             :user
+  has_one :user
   has_one :work_space
 end
