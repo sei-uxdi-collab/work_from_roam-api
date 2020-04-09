@@ -39,13 +39,21 @@ class WorkSpacesController < OpenReadController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_work_space
-      @work_space = WorkSpace.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def work_space_params
-      params.require(:work_space).permit(:place_id, :lat, :lng, :user_id, :avg_rating)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_work_space
+    @work_space = WorkSpace.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def work_space_params
+    params.require(:work_space).permit(:place_id,
+                                       :lat,
+                                       :lng,
+                                       :name,
+                                       :address,
+                                       :photo,
+                                       :user_id,
+                                       :avg_rating)
+  end
 end
