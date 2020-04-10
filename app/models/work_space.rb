@@ -9,33 +9,6 @@ class WorkSpace < ApplicationRecord
       .having("AVG(reviews.#{column}) > 4", column) if column
   }
 
-  # scope :max_rating, ->(rating) { joins(:reviews)
-  #   .group('work_spaces.id')
-  #   .order('AVG(reviews.rating) desc')
-  #   .having('AVG(reviews.rating) > ?', rating) if rating }
-
-  # class << self
-  #   def top_averages_for(column, greater_than: 2, limit: 5)
-  #     by_average_for(column)
-  #       .having("AVG(reviews.#{column}) > ?", greater_than)
-  #       .limit(5)
-  #   end
-  # end
-  #
-  # TOP_AVG_COLUMNS = [
-  #   :rating,
-  #   :seating,
-  #   :bathroom,
-  #   :noise,
-  #   :wifi
-  # ].freeze
-  #
-  # TOP_AVG_COLUMNS.each do |column|
-  #   define_method(:"top_avg_#{column}") do
-  #     top_averages_for(column)
-  #   end
-  # end
-
   def top_avg_rating
     WorkSpace.by_average_for(:rating).limit(5)
   end
