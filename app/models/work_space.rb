@@ -2,49 +2,31 @@ class WorkSpace < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :delete_all
 
-  scope :max_rating, ->(rating) { joins(:reviews)
-    .group('work_spaces.id')
-    .order('AVG(reviews.rating) desc')
-    .having('AVG(reviews.rating) > ?', rating) if rating }
-
-  scope :max_bathroom, ->(bathroom) { joins(:reviews)
-    .group('work_spaces.id')
-    .order('AVG(reviews.bathroom) desc')
-    .having('AVG(reviews.bathroom) > ?', bathroom) if bathroom }
-
-  scope :max_noise, ->(noise) { joins(:reviews)
-    .group('work_spaces.id')
-    .order('AVG(reviews.noise) desc')
-    .having('AVG(reviews.noise) > ?', noise) if noise }
-
-  scope :max_wifi, ->(wifi) { joins(:reviews)
-    .group('work_spaces.id')
-    .order('AVG(reviews.wifi) desc')
-    .having('AVG(reviews.wifi) > ?', wifi) if wifi }
-
-  scope :max_seating, ->(seating) { joins(:reviews)
-    .group('work_spaces.id')
-    .order('AVG(reviews.seating) desc')
-    .having('AVG(reviews.seating) > ?', seating) if seating }
+  scope :by_average_for, ->(column) {
+    joins(:reviews)
+      .group('work_spaces.id')
+      .order("AVG(reviews.#{column}) desc")
+      .having("AVG(reviews.#{column}) > 4", column) if column
+  }
 
   def top_avg_rating
-    WorkSpace.max_rating(2).limit(5)
+    WorkSpace.by_average_for(:rating).limit(5)
   end
 
   def top_avg_bathroom
-    WorkSpace.max_bathroom(2).limit(5)
+    WorkSpace.by_average_for(:bathroom).limit(5)
   end
 
   def top_avg_noise
-    WorkSpace.max_noise(2).limit(5)
+    WorkSpace.by_average_for(:noise).limit(5)
   end
 
   def top_avg_wifi
-    WorkSpace.max_wifi(2).limit(5)
+    WorkSpace.by_average_for(:wifi).limit(5)
   end
 
   def top_avg_seating
-    WorkSpace.max_seating(2).limit(5)
+    WorkSpace.by_average_for(:seating).limit(5)
   end
 
   # Count all reviews

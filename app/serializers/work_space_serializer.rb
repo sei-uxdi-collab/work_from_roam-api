@@ -23,11 +23,11 @@ class WorkSpaceSerializer < ActiveModel::Serializer
              :bool_food,
              :bool_bathroom,
              :bool_wifi,
-             :top_avg_rating,
-             :top_avg_bathroom,
-             :top_avg_noise,
              :top_avg_wifi,
-             :top_avg_seating
+             :top_avg_seating,
+             :top_avg_noise,
+             :top_avg_bathroom,
+             :top_avg_rating
   has_one :user
   has_many :reviews
 end
