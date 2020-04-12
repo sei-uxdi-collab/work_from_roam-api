@@ -9,7 +9,10 @@ curl "http://localhost:4741/work_spaces" \
     "work_space": {
       "place_id": "'"${PLACE}"'",
       "lat": "'"${LAT}"'",
-      "lng": "'"${LNG}"'"
+      "lng": "'"${LNG}"'",
+      "address": "'"${ADD}"'",
+      "photo": "'"${PHOTO}"'",
+      "name": "'"${NAME}"'"
     }
   }'
 
