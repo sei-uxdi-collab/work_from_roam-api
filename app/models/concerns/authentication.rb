@@ -4,18 +4,13 @@ module Authentication
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def authenticate(username, email, password)
-      user = User.find_by(username: username)
-      user_email = User.find_by(email: email)
-      return unless user || user_email
+    def authenticate(identifier, password)
+      user = User.where(email: identifier)
+                 .or(User.where(username: identifier)).take
+      return unless user
 
-      if user
-        user.send :new_token
-        user.authenticate password
-      elsif user_email
-        user_email.send :new_token
-        user_email.authenticate password
-      end
+      user.send :new_token
+      user.authenticate password
     end
   end
 
@@ -27,6 +22,8 @@ module Authentication
     validates :email, presence: true
     validates :username, uniqueness: true
     validates :username, presence: true
+    validates :username, format: { with: /\A[a-zA-Z0-9]+\z/,
+                                   message: 'only allows letters and numbers' }
     validates :password_confirmation, presence: true, on: :create
   end
 
