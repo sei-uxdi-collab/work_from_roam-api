@@ -16,7 +16,7 @@ class UsersController < ProtectedController
   # POST '/sign-in'
   def signin
     creds = user_creds
-    if (user = User.authenticate creds[:email],
+    if (user = User.authenticate creds[:identifier],
                                  creds[:password])
       render json: user, serializer: UserLoginSerializer, root: 'user'
     else
@@ -46,15 +46,32 @@ class UsersController < ProtectedController
     end
   end
 
+  # PATCH '/update-user/:id'
+  def update
+    if current_user.authenticate(username_creds[:password]) &&
+       !(current_user.username = username_creds[:username]).blank? &&
+       !(current_user.email = username_creds[:email]).blank? &&
+       current_user.save
+      head :no_content
+    else
+      head :bad_request
+    end
+  end
+
   private
 
   def user_creds
     params.require(:credentials)
-          .permit(:email, :username, :avatar, :password, :password_confirmation)
+          .permit(:email, :username, :avatar, :identifier, :password, :password_confirmation)
   end
 
   def pw_creds
     params.require(:passwords)
           .permit(:old, :new)
+  end
+
+  def username_creds
+    params.require(:credentials)
+          .permit(:password, :username, :email)
   end
 end
