@@ -1,6 +1,7 @@
 class WorkSpace < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :delete_all
+  acts_as_votable
 
   scope :by_average_for, ->(column) {
     joins(:reviews)

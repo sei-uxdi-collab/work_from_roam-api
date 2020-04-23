@@ -38,6 +38,27 @@ class WorkSpacesController < OpenReadController
     @work_space.destroy
   end
 
+  def upvote
+    @work_space = WorkSpace.find(params[:id])
+    current_user.upvotes @work_space
+    # redirect_to :back
+  end
+
+  def downvote
+    @work_space = WorkSpace.find(params[:id])
+    @work_space.downvote_by current_user
+    # redirect_to :back
+  end
+
+  def like
+    @work_space = WorkSpace.find(params[:id])
+    if current_user
+
+    render html: @work_space.votes_for.where(voter_id: [current_user.id])
+                         .pluck(:vote_flag)
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
