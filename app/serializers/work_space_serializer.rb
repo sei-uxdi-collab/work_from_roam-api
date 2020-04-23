@@ -27,7 +27,8 @@ class WorkSpaceSerializer < ActiveModel::Serializer
              :top_avg_seating,
              :top_avg_noise,
              :top_avg_bathroom,
-             :top_avg_rating
+             :top_avg_rating,
+             :votes_for
   has_one :user
   has_many :reviews
 end

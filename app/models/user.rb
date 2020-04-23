@@ -5,4 +5,5 @@ class User < ApplicationRecord
   has_many :examples
   has_many :work_spaces
   has_many :reviews
+  acts_as_voter
 end
