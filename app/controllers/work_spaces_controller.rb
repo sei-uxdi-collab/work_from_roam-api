@@ -11,7 +11,7 @@ class WorkSpacesController < OpenReadController
 
   # GET /work_spaces/top_rated
   def top_rated
-    @work_spaces = WorkSpace.by_average_for(:rating).limit(1)
+    @work_spaces = WorkSpace.by_average_for(:rating).limit(5)
 
     render json: @work_spaces
   end
