@@ -28,7 +28,8 @@ class WorkSpaceSerializer < ActiveModel::Serializer
              :cached_votes_score,
              :cached_votes_up,
              :cached_weighted_score,
-             :cached_weighted_average
+             :cached_weighted_average,
+             :top_avg_rating
   has_one :user
   has_many :reviews
 end
