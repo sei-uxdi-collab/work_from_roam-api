@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   resources :reviews, except: %i[new edit]
+  get '/work_spaces/top_rated' => 'work_spaces#top_rated'
   resources :work_spaces, except: %i[new edit]
   # RESTful routes
   resources :examples, except: %i[new edit]

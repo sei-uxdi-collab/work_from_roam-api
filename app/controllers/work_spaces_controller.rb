@@ -4,6 +4,13 @@ class WorkSpacesController < OpenReadController
   # GET /work_spaces
   def index
     @work_spaces = WorkSpace.all
+    # @work_spaces = WorkSpace.by_average_for(:rating).limit(5)
+
+    render json: @work_spaces
+  end
+
+  def top_rated
+    @work_spaces = WorkSpace.by_average_for(:rating).limit(1)
 
     render json: @work_spaces
   end
@@ -58,6 +65,10 @@ class WorkSpacesController < OpenReadController
                          .pluck(:vote_flag)
     end
   end
+
+  # def top_avg_rating
+  #   WorkSpace.by_average_for(:rating).limit(5)
+  # end
 
   private
 

@@ -6,7 +6,7 @@ class WorkSpace < ApplicationRecord
   scope :by_average_for, ->(column) {
     joins(:reviews)
       .group('work_spaces.id')
-      .order("AVG(reviews.#{column}) desc")
+      .order(Arel.sql("AVG(reviews.#{column}) desc"))
       .having("AVG(reviews.#{column}) > 4", column) if column
   }
 
