@@ -67,10 +67,6 @@ class WorkSpacesController < OpenReadController
     end
   end
 
-  # def top_avg_rating
-  #   WorkSpace.by_average_for(:rating).limit(5)
-  # end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
