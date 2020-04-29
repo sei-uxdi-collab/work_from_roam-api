@@ -6,5 +6,6 @@ class UserSerializer < ActiveModel::Serializer
              :avatar,
              :username,
              :favorites,
-             :reviews
+             :reviews,
+             :top_avg_rating
 end

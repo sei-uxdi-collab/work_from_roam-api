@@ -7,7 +7,8 @@ class UserLoginSerializer < ActiveModel::Serializer
              :avatar,
              :favorites,
              :reviews,
-             :token
+             :token,
+             :top_avg_rating
 
   def token
     Rails.application.message_verifier(:signed_token).generate(object.token)
