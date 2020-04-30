@@ -23,17 +23,13 @@ class WorkSpaceSerializer < ActiveModel::Serializer
              :bool_food,
              :bool_bathroom,
              :bool_wifi,
-             :top_avg_wifi,
-             :top_avg_seating,
-             :top_avg_noise,
-             :top_avg_bathroom,
-             :top_avg_rating,
              :votes_for,
              :cached_votes_total,
              :cached_votes_score,
              :cached_votes_up,
              :cached_weighted_score,
-             :cached_weighted_average
+             :cached_weighted_average,
+             :top_avg_rating
   has_one :user
   has_many :reviews
 end
