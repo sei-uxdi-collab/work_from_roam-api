@@ -10,6 +10,16 @@ class WorkSpace < ApplicationRecord
       .having("AVG(reviews.#{column}) > 4", column) if column
   }
 
+  def avg_rating
+    reviews.average(:rating).to_f
+  end
+
+  def update_rating
+    reviews.average(:rating).to_f
+
+    update(avgrating: reviews.average(:rating).to_f)
+  end
+
   def top_avg_rating
     WorkSpace.by_average_for(:rating).limit(5)
   end
@@ -36,9 +46,9 @@ class WorkSpace < ApplicationRecord
   end
 
   # Averages for attributes
-  def avg_rating
-    reviews.average(:rating).to_f
-  end
+  # def avg_rating
+  #   reviews.average(:rating).to_f
+  # end
 
   def avg_noise
     reviews.average(:noise).to_f
