@@ -46,18 +46,21 @@ class WorkSpacesController < OpenReadController
     @work_space.destroy
   end
 
+  # Add work_space as a 'Favorite'
   def upvote
     @work_space = WorkSpace.find(params[:id])
     current_user.upvotes @work_space
     # redirect_to :back
   end
 
+  # Remove work_space as a 'Favorite'
   def downvote
     @work_space = WorkSpace.find(params[:id])
     @work_space.downvote_by current_user
     # redirect_to :back
   end
 
+  # Retrieve current_user Favorite status for work_space show
   def like
     @work_space = WorkSpace.find(params[:id])
     if current_user

@@ -9,5 +9,6 @@ class UserSerializer < ActiveModel::Serializer
              :reviews,
              :top_avg_rating
   has_many :reviews
+  has_many :votes
   has_many :work_spaces
 end
