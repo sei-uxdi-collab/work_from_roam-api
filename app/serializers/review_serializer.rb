@@ -8,6 +8,13 @@ class ReviewSerializer < ActiveModel::Serializer
              :noise,
              :coffee,
              :seating,
+             :petfriendly,
+             :wifipass,
+             :goodforgroup,
+             :alcohol,
+             :parking,
+             :meetingspace,
+             :outdoorspace,
              :user,
              :work_space
   has_one :user

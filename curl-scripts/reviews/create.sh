@@ -16,7 +16,14 @@ curl "http://localhost:4741/reviews" \
       "seating": "'"${SEAT}"'",
       "outlet": "'"${OUT}"'",
       "noise": "'"${NOISE}"'",
-      "work_space_id": "'"${WID}"'"
+      "work_space_id": "'"${WID}"'",
+      "petfriendly": "'"${PET}"'",
+      "wifipass": "'"${WIPASS}"'",
+      "goodforgroup": "'"${GROUP}"'",
+      "alcohol": "'"${BEER}"'",
+      "parking": "'"${PARK}"'",
+      "meetingspace": "'"${MEET}"'",
+      "outdoorspace": "'"${OUT}"'"
     }
   }'
 
