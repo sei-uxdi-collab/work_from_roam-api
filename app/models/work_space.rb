@@ -10,9 +10,18 @@ class WorkSpace < ApplicationRecord
       .having("AVG(reviews.#{column}) > 4", column) if column
   }
 
-  def avg_rating
-    reviews.average(:rating).to_f
-  end
+  # def voted_as_when_voting_on(votable, args = {})
+  #   vote = find_votes(votable_id: votable.id, votable_type: votable.class.base_class.name,
+  #                      vote_scope: args[:vote_scope]).select(:vote_flag).last
+  #   return nil unless vote
+  #   return vote.vote_flag
+  # end
+
+  # def find_votes_by(voter, vote_scope)
+  #   find_votes_for(voter_id: voter.id,
+  #                  vote_scope: vote_scope,
+  #                  voter_type: voter.class.base_class.name)
+  # end
 
   def update_rating
     reviews.average(:rating).to_f
@@ -46,9 +55,9 @@ class WorkSpace < ApplicationRecord
   end
 
   # Averages for attributes
-  # def avg_rating
-  #   reviews.average(:rating).to_f
-  # end
+  def avg_rating
+    reviews.average(:rating).to_f
+  end
 
   def avg_noise
     reviews.average(:noise).to_f

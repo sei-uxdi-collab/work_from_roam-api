@@ -8,23 +8,20 @@ class User < ApplicationRecord
   has_many :votes
   acts_as_voter
 
-  def favorites
-    votes.where(vote_flag: true)
-    # work_spaces.where(user_id: 1)
-    # faves = votes.where(vote_flag: true)
-  end
-
   def find_up_voted_items(extra_conditions = {})
     find_voted_items extra_conditions.merge(vote_flag: true)
   end
-  # scope :favorite_spaces, ->(column) {
-  #   joins(:votes)
-  #     .where("votes.#{column} != false", column) if column
-  # }
-  #
-  # def user_favorite
-  #   User.favorite_spaces(:vote_flag)
-  # end
+
+  def voted_as_when_voting_on(votable, args = {})
+    vote = find_votes(votable_id: votable.id, votable_type: votable.class.base_class.name,
+                       vote_scope: args[:vote_scope]).select(:vote_flag).last
+    return nil unless vote
+    return vote.vote_flag
+  end
+
+  def find_votes(extra_conditions = {})
+    votes.where(extra_conditions)
+  end
 
   scope :by_average_for, ->(column) {
     joins(:reviews)

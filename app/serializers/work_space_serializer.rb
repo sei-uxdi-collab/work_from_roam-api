@@ -30,8 +30,7 @@ class WorkSpaceSerializer < ActiveModel::Serializer
              :cached_weighted_score,
              :cached_weighted_average,
              :top_avg_rating,
-             :update_rating,
-             :avgrating
+             :phone
   has_one :user
   has_many :reviews
 end

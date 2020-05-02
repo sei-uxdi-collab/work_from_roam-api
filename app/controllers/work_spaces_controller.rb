@@ -85,6 +85,7 @@ class WorkSpacesController < OpenReadController
                                        :name,
                                        :address,
                                        :photo,
+                                       :phone,
                                        :user_id)
   end
 end
