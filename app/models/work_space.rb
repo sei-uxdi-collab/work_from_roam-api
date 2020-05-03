@@ -10,6 +10,25 @@ class WorkSpace < ApplicationRecord
       .having("AVG(reviews.#{column}) > 4", column) if column
   }
 
+  # def voted_as_when_voting_on(votable, args = {})
+  #   vote = find_votes(votable_id: votable.id, votable_type: votable.class.base_class.name,
+  #                      vote_scope: args[:vote_scope]).select(:vote_flag).last
+  #   return nil unless vote
+  #   return vote.vote_flag
+  # end
+
+  # def find_votes_by(voter, vote_scope)
+  #   find_votes_for(voter_id: voter.id,
+  #                  vote_scope: vote_scope,
+  #                  voter_type: voter.class.base_class.name)
+  # end
+
+  def update_rating
+    reviews.average(:rating).to_f
+
+    update(avgrating: reviews.average(:rating).to_f)
+  end
+
   def top_avg_rating
     WorkSpace.by_average_for(:rating).limit(5)
   end
@@ -69,9 +88,10 @@ class WorkSpace < ApplicationRecord
   end
 
   # Booleans for attributes
-  def bool_outlet
-    if ((reviews.where(outlet: 0
-    ).pluck(:outlet)).length.to_f/
+
+  def bool_alcohol
+    if ((reviews.where(alcohol: 0
+    ).pluck(:alcohol)).length.to_f/
     count_reviews * 100) > 25
       false
     else
@@ -79,9 +99,9 @@ class WorkSpace < ApplicationRecord
     end
   end
 
-  def bool_seating
-    if ((reviews.where(seating: 0
-    ).pluck(:seating)).length.to_f/
+  def bool_bathroom
+    if ((reviews.where(bathroom: 0
+    ).pluck(:bathroom)).length.to_f/
     count_reviews * 100) > 25
       false
     else
@@ -109,9 +129,69 @@ class WorkSpace < ApplicationRecord
     end
   end
 
-  def bool_bathroom
-    if ((reviews.where(bathroom: 0
-    ).pluck(:bathroom)).length.to_f/
+  def bool_goodforgroup
+    if ((reviews.where(goodforgroup: 0
+    ).pluck(:goodforgroup)).length.to_f/
+    count_reviews * 100) > 25
+      false
+    else
+      true
+    end
+  end
+
+  def bool_meetingspace
+    if ((reviews.where(meetingspace: 0
+    ).pluck(:meetingspace)).length.to_f/
+    count_reviews * 100) > 25
+      false
+    else
+      true
+    end
+  end
+
+  def bool_outdoorspace
+    if ((reviews.where(outdoorspace: 0
+    ).pluck(:outdoorspace)).length.to_f/
+    count_reviews * 100) > 25
+      false
+    else
+      true
+    end
+  end
+
+  def bool_outlet
+    if ((reviews.where(outlet: 0
+    ).pluck(:outlet)).length.to_f/
+    count_reviews * 100) > 25
+      false
+    else
+      true
+    end
+  end
+
+  def bool_parking
+    if ((reviews.where(parking: 0
+    ).pluck(:parking)).length.to_f/
+    count_reviews * 100) > 25
+      false
+    else
+      true
+    end
+  end
+
+  def bool_petfriendly
+    if ((reviews.where(petfriendly: 0
+    ).pluck(:petfriendly)).length.to_f/
+    count_reviews * 100) > 25
+      false
+    else
+      true
+    end
+  end
+
+  def bool_seating
+    if ((reviews.where(seating: 0
+    ).pluck(:seating)).length.to_f/
     count_reviews * 100) > 25
       false
     else
@@ -122,6 +202,16 @@ class WorkSpace < ApplicationRecord
   def bool_wifi
     if ((reviews.where(wifi: 0
     ).pluck(:wifi)).length.to_f/
+    count_reviews * 100) > 25
+      false
+    else
+      true
+    end
+  end
+
+  def bool_wifipass
+    if ((reviews.where(wifipass: 0
+    ).pluck(:wifipass)).length.to_f/
     count_reviews * 100) > 25
       false
     else

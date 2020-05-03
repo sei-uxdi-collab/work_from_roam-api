@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_181036) do
+ActiveRecord::Schema.define(version: 2020_05_02_205110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2020_04_24_181036) do
     t.integer "outlet"
     t.integer "noise"
     t.integer "bathroom"
+    t.integer "petfriendly"
+    t.integer "wifipass"
+    t.integer "goodforgroup"
+    t.integer "alcohol"
+    t.integer "parking"
+    t.integer "meetingspace"
+    t.integer "outdoorspace"
     t.index ["user_id"], name: "index_reviews_on_user_id"
     t.index ["work_space_id"], name: "index_reviews_on_work_space_id"
   end
@@ -85,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020_04_24_181036) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
+    t.string "phone"
     t.index ["user_id"], name: "index_work_spaces_on_user_id"
   end
 

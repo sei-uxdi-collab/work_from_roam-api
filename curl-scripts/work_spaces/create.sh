@@ -12,7 +12,8 @@ curl "http://localhost:4741/work_spaces" \
       "lng": "'"${LNG}"'",
       "address": "'"${ADD}"'",
       "photo": "'"${PHOTO}"'",
-      "name": "'"${NAME}"'"
+      "name": "'"${NAME}"'",
+      "phone": "'"${PHONE}"'"
     }
   }'
 
