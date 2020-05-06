@@ -9,10 +9,15 @@ class WorkSpaceSerializer < ActiveModel::Serializer
              :phone,
              :user,
              :avg_rating,
+             :avgrating,
              :avg_noise,
+             :avgnoise,
              :avg_wifi,
+             :avgwifi,
              :avg_bathroom,
+             :avgbathroom,
              :avg_seating,
+             :avgseating,
              :bool_alcohol,
              :bool_bathroom,
              :bool_coffee,
@@ -27,7 +32,12 @@ class WorkSpaceSerializer < ActiveModel::Serializer
              :bool_wifi,
              :bool_wifipass,
              :votes_for,
-             :reviews
+             :reviews,
+             :update_bathroom,
+             :update_noise,
+             :update_rating,
+             :update_seating,
+             :update_wifi
   has_one :user
   has_many :reviews
 end

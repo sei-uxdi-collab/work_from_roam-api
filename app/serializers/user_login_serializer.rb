@@ -5,9 +5,10 @@ class UserLoginSerializer < ActiveModel::Serializer
              :email,
              :username,
              :avatar,
-             :reviews,
              :token,
+             :reviews,
              :top_avg_rating,
+             :votes,
              :find_up_voted_items
   has_many :reviews
   has_many :votes
