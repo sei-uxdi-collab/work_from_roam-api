@@ -1,14 +1,12 @@
-#!/bin/bash
-
-curl "http://localhost:4741/sign-up" \
+curl "http://localhost:4741/update-user" \
   --include \
-  --request POST \
+  --request PATCH \
+  --header "Authorization: Token token=${TOKEN}" \
   --header "Content-Type: application/json" \
   --data '{
     "credentials": {
+      "password": "'"${PW}"'",
       "email": "'"${EMAIL}"'",
-      "password": "'"${PASSWORD}"'",
-      "password_confirmation": "'"${PASSWORD}"'",
       "username": "'"${NAME}"'",
       "avatar": "'"${AV}"'"
     }

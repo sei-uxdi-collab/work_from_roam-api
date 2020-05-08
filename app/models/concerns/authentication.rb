@@ -4,9 +4,11 @@ module Authentication
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def authenticate(email, password)
-      user = find_by(email: email)
+    def authenticate(identifier, password)
+      user = User.where(email: identifier)
+                 .or(User.where(username: identifier)).take
       return unless user
+
       user.send :new_token
       user.authenticate password
     end
@@ -18,6 +20,10 @@ module Authentication
     after_find :fix_up_token
     validates :email, uniqueness: true
     validates :email, presence: true
+    validates :username, uniqueness: true
+    validates :username, presence: true
+    validates :username, format: { with: /\A[a-zA-Z0-9]+\z/,
+                                   message: 'only allows letters and numbers' }
     validates :password_confirmation, presence: true, on: :create
   end
 
