@@ -51,6 +51,7 @@ class UsersController < ProtectedController
     if current_user.authenticate(username_creds[:password]) &&
        !(current_user.username = username_creds[:username]).blank? &&
        !(current_user.email = username_creds[:email]).blank? &&
+       !(current_user.avatar = username_creds[:avatar]).blank? &&
        current_user.save
       head :no_content
     else
@@ -72,6 +73,6 @@ class UsersController < ProtectedController
 
   def username_creds
     params.require(:credentials)
-          .permit(:password, :username, :email)
+          .permit(:password, :username, :email, :avatar)
   end
 end
