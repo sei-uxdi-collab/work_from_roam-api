@@ -59,6 +59,15 @@ class UsersController < ProtectedController
     end
   end
 
+  # GET '/show-user'
+  def showuser
+    if current_user
+      render json: current_user
+    else
+      head :unauthorized
+    end
+  end
+
   private
 
   def user_creds

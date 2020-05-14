@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   delete '/sign-out' => 'users#signout'
   patch '/change-password' => 'users#changepw'
   patch '/update-user' => 'users#update'
+  get '/show-user' => 'users#showuser'
 end
