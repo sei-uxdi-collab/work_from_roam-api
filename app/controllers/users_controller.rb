@@ -48,7 +48,7 @@ class UsersController < ProtectedController
 
   # PATCH '/update-user/:id'
   def update
-    if current_user.authenticate(username_creds[:password]) &&
+    if current_user &&
        !(current_user.username = username_creds[:username]).blank? &&
        !(current_user.email = username_creds[:email]).blank? &&
        !(current_user.avatar = username_creds[:avatar]).blank? &&
@@ -56,6 +56,15 @@ class UsersController < ProtectedController
       head :no_content
     else
       head :bad_request
+    end
+  end
+
+  # GET '/show-user'
+  def showuser
+    if current_user
+      render json: current_user
+    else
+      head :unauthorized
     end
   end
 
