@@ -62,7 +62,7 @@ class UsersController < ProtectedController
   # GET '/show-user'
   def showuser
     if current_user
-      render json: current_user
+      render json: current_user, serializer: UserLoginSerializer, root: 'user'
     else
       head :unauthorized
     end
