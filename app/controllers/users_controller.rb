@@ -48,7 +48,7 @@ class UsersController < ProtectedController
 
   # PATCH '/update-user/:id'
   def update
-    if current_user.authenticate(username_creds[:password]) &&
+    if current_user &&
        !(current_user.username = username_creds[:username]).blank? &&
        !(current_user.email = username_creds[:email]).blank? &&
        !(current_user.avatar = username_creds[:avatar]).blank? &&
