@@ -16,7 +16,9 @@ class ReviewSerializer < ActiveModel::Serializer
              :meetingspace,
              :outdoorspace,
              :user,
-             :work_space
+             :work_space,
+             :created_at,
+             :date
   has_one :user
   has_one :work_space
 end
