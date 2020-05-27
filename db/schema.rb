@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2020_05_25_015657) do
     t.float "avgwifi"
     t.float "avgbathroom"
     t.float "avgseating"
-    t.text "addresscomponent", default: [], array: true
+    t.json "addresscomponent", default: "{}", null: false
     t.index ["user_id"], name: "index_work_spaces_on_user_id"
   end
 
