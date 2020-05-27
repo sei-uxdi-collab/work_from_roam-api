@@ -15,6 +15,7 @@ class ReviewSerializer < ActiveModel::Serializer
              :parking,
              :meetingspace,
              :outdoorspace,
+             :outlet,
              :user,
              :work_space,
              :created_at,
