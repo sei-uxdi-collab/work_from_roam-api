@@ -13,7 +13,8 @@ curl "http://localhost:4741/work_spaces" \
       "address": "'"${ADD}"'",
       "photo": "'"${PHOTO}"'",
       "name": "'"${NAME}"'",
-      "phone": "'"${PHONE}"'"
+      "phone": "'"${PHONE}"'",
+      "addresscomponent": "'"${ADCOMP}"'"
     }
   }'
 

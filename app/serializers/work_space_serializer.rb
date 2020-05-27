@@ -5,6 +5,7 @@ class WorkSpaceSerializer < ActiveModel::Serializer
              :lng,
              :name,
              :address,
+             :addresscomponent,
              :photo,
              :phone,
              :user,

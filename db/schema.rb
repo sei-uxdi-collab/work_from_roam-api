@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_010819) do
+ActiveRecord::Schema.define(version: 2020_05_25_015657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_010819) do
     t.float "avgwifi"
     t.float "avgbathroom"
     t.float "avgseating"
+    t.json "addresscomponent", default: "{}", null: false
     t.index ["user_id"], name: "index_work_spaces_on_user_id"
   end
 
