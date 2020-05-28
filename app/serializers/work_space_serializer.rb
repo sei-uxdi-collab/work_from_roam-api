@@ -21,6 +21,7 @@ class WorkSpaceSerializer < ActiveModel::Serializer
              :avgseating,
              :bool_alcohol,
              :bool_bathroom,
+             :bool_clean,
              :bool_coffee,
              :bool_food,
              :bool_goodforgroup,

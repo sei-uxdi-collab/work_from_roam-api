@@ -48,7 +48,7 @@ class ReviewsController < OpenReadController
       params.require(:review).permit(:rating, :note, :wifi, :bathroom, :food,
                                      :coffee, :noise, :outlet, :seating,
                                      :petfriendly, :wifipass, :goodforgroup,
-                                     :alcohol, :parking, :meetingspace,
+                                     :alcohol, :parking, :meetingspace, :clean,
                                      :outdoorspace, :user_id, :work_space_id)
     end
 end
