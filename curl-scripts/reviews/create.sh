@@ -23,7 +23,8 @@ curl "http://localhost:4741/reviews" \
       "alcohol": "'"${BEER}"'",
       "parking": "'"${PARK}"'",
       "meetingspace": "'"${MEET}"'",
-      "outdoorspace": "'"${OUT}"'"
+      "outdoorspace": "'"${OUT}"'",
+      "clean": "'"${CLEAN}"'"
     }
   }'
 
