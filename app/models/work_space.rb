@@ -117,6 +117,16 @@ class WorkSpace < ApplicationRecord
     end
   end
 
+  def bool_clean
+    if ((reviews.where(clean: 0
+    ).pluck(:clean)).length.to_f/
+    count_reviews * 100) > 25
+      false
+    else
+      true
+    end
+  end
+
   def bool_coffee
     if ((reviews.where(coffee: 0
     ).pluck(:coffee)).length.to_f/
