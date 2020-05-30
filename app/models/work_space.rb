@@ -43,6 +43,12 @@ class WorkSpace < ApplicationRecord
     update(avgwifi: reviews.average(:wifi).to_f)
   end
 
+  def update_clean
+    reviews.average(:clean).to_f
+
+    update(avgclean: reviews.average(:clean).to_f)
+  end
+
   # Calculate the top rated work_spaces
   def top_avg_rating
     WorkSpace.by_average_for(:rating).limit(5)
@@ -84,6 +90,10 @@ class WorkSpace < ApplicationRecord
 
   def avg_outlet
     reviews.average(:outlet).to_f
+  end
+
+  def avg_clean
+    reviews.average(:clean).to_f
   end
 
   # Booleans for attributes (need to refactor)
