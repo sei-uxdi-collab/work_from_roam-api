@@ -8,7 +8,6 @@ class WorkSpaceSerializer < ActiveModel::Serializer
              :addresscomponent,
              :photo,
              :phone,
-             :user,
              :avgclean,
              :avg_rating,
              :avgrating,
