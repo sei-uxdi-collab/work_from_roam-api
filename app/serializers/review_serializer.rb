@@ -17,7 +17,6 @@ class ReviewSerializer < ActiveModel::Serializer
              :outdoorspace,
              :outlet,
              :clean,
-             :user,
              :work_space,
              :created_at,
              :date
