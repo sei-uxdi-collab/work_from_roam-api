@@ -17,10 +17,11 @@ class ReviewSerializer < ActiveModel::Serializer
              :outdoorspace,
              :outlet,
              :clean,
-             :user,
              :work_space,
              :created_at,
-             :date
+             :date,
+             :username,
+             :avatar
   has_one :user
   has_one :work_space
 end

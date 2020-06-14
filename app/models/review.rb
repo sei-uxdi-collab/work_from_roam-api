@@ -7,4 +7,12 @@ class Review < ApplicationRecord
   def date
     created_at.strftime('%m-%d-%Y')
   end
+
+  def username
+    user.username
+  end
+
+  def avatar
+    user.avatar
+  end
 end
