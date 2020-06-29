@@ -20,7 +20,7 @@ module Authentication
     after_find :fix_up_token
     validates :email, uniqueness: true
     validates :email, presence: true
-    validates :username, uniqueness: true
+    validates :username, uniqueness: { case_sensitive: false }
     validates :username, presence: true
     validates :username, format: { with: /\A[a-zA-Z0-9]+\z/,
                                    message: 'only allows letters and numbers' }
