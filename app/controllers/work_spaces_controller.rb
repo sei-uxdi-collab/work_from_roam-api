@@ -87,6 +87,9 @@ class WorkSpacesController < OpenReadController
                                        :photo,
                                        :phone,
                                        :addresscomponent,
+                                       :bool_cafe,
+                                       :bool_restaurant,
+                                       :bool_library,
                                        :user_id)
   end
 end
