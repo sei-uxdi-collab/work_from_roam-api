@@ -14,7 +14,10 @@ curl "http://localhost:4741/work_spaces" \
       "photo": "'"${PHOTO}"'",
       "name": "'"${NAME}"'",
       "phone": "'"${PHONE}"'",
-      "addresscomponent": "'"${ADCOMP}"'"
+      "addresscomponent": "'"${ADCOMP}"'",
+      "bool_cafe": "'"${CAFE}"'",
+      "bool_restaurant": "'"${REST}"'",
+      "bool_library": "'"${LIBRARY}"'"
     }
   }'
 
