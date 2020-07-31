@@ -24,6 +24,7 @@ module Authentication
     validates :username, presence: true
     validates :username, format: { with: /\A[a-zA-Z0-9]+\z/,
                                    message: 'only allows letters and numbers' }
+    validates :password, length: { within: 6..40 }
     validates :password_confirmation, presence: true, on: :create
   end
 
