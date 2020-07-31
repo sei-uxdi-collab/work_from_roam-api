@@ -14,6 +14,7 @@ module Authentication
     end
   end
 
+  # Conditions for password validation
   PASSWORD_REQUIREMENTS = /\A
     (?=.{8,})
     (?=.*\d)
