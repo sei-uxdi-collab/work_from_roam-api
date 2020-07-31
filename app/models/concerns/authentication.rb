@@ -14,6 +14,14 @@ module Authentication
     end
   end
 
+  PASSWORD_REQUIREMENTS = /\A
+    (?=.{8,})
+    (?=.*\d)
+    (?=.*[a-z])
+    (?=.*[A-Z])
+    (?=.*[[:^alnum:]])
+  /x
+
   included do
     has_secure_password
     before_create :set_token
@@ -24,7 +32,7 @@ module Authentication
     validates :username, presence: true
     validates :username, format: { with: /\A[a-zA-Z0-9]+\z/,
                                    message: 'only allows letters and numbers' }
-    validates :password, length: { within: 6..40 }
+    validates :password, format: PASSWORD_REQUIREMENTS
     validates :password_confirmation, presence: true, on: :create
   end
 
