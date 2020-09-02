@@ -56,7 +56,7 @@ class UsersController < ProtectedController
     # then 204
     # else 400
     if current_user.authenticate(pw_creds[:old]) &&
-       (pw_creds[:new] = pw_creds[:confirm]) &&
+       (pw_creds[:new] == pw_creds[:confirm]) &&
        !(current_user.password = pw_creds[:new]).blank? &&
        current_user.save
       head :no_content
