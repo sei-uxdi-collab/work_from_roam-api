@@ -8,7 +8,8 @@ curl "http://localhost:4741/change-password" \
   --data '{
     "passwords": {
       "old": "'"${OLDPW}"'",
-      "new": "'"${NEWPW}"'"
+      "new": "'"${NEWPW}"'",
+      "confirm": "'"${CONFIRM}"'"
     }
   }'
 
