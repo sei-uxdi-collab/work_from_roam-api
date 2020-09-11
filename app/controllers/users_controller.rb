@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ProtectedController
-  skip_before_action :authenticate, only: %i[signup signin checkname checkemail]
+  skip_before_action :authenticate, only: %i[signup signin checkusername checkemail]
 
   # POST '/sign-up'
   def signup
@@ -16,7 +16,7 @@ class UsersController < ProtectedController
   # GET '/checkname'
   # Check if username is taken
   # Returns true or false
-  def checkname
+  def checkusername
     @user = User.where(username: params[:username]).exists?
 
     render json: @user
