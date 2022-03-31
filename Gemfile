@@ -7,7 +7,7 @@ gem 'active_model_serializers', '~> 0.10.6'
 gem 'acts_as_votable'
 gem 'bcrypt', '~> 3.1.11'
 gem 'pg', '~> 0.21'
-gem 'puma', '~> 3.11.2'
+gem 'puma', '~> 4.3.12'
 gem 'rack-cors', '~> 1.0.2', require: 'rack/cors'
 gem 'rails', '~> 5.2.3'
 
